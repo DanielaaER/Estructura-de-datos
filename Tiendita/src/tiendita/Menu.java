@@ -86,9 +86,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jVenta)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jDia)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,7 +97,8 @@ public class Menu extends javax.swing.JFrame {
     private void jProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProductoActionPerformed
         // TODO add your handling code here:
         //Boton lista de productos, muestra la lista de productos que la tienda tiene registrados, donde el usuario podra consultar, agregar, modficiar y eliminaar prductos
-       
+       MenuProductos menuProducto=new MenuProductos();
+       menuProducto.setVisible(true);
     }//GEN-LAST:event_jProductoActionPerformed
 
     private void jVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVentaActionPerformed
