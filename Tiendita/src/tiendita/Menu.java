@@ -53,9 +53,9 @@ public class Menu {
                                     } catch (InputMismatchException ex) {
                                         avanza2 = true;
                                         System.out.println("Ingresa los datos correctamente");
+                                        s.next();
                                     }
-                                    s.next();
-                                } while (avanza);
+                                } while (avanza2);
                             } while (5 != opc2);
                             break;
                         case 2:
@@ -72,7 +72,7 @@ public class Menu {
                     s.next();
                 }
             } while (avanza);
-        } while (5 != opc1);
+        } while (4 != opc1);
     }
 
 }
