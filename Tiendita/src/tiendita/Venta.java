@@ -11,10 +11,29 @@ import java.time.LocalDate;
  * @author danie
  */
 public class Venta {
-    private int folio=-1, cantidad, codigopro;
+    private int folio = -1, cantidad, codigopro;
     private LocalDate fecha;
     private String nombre;
-    private double totalpro, totalven;
+    private double totalpro, precio;
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public Venta(int codigopro, String nombre, int cantidad, double precio) {
+        folio = folio + 1;
+        this.codigopro=codigopro;
+        this.nombre=nombre;
+        this.cantidad=cantidad;
+        this.precio=precio;
+        this.totalpro=cantidad*precio;
+
+
+    }
 
     public int getFolio() {
         return folio;
@@ -40,10 +59,6 @@ public class Venta {
         return totalpro;
     }
 
-    public double getTotalven() {
-        return totalven;
-    }
-
     public void setFolio(int folio) {
         this.folio = folio;
     }
@@ -52,24 +67,9 @@ public class Venta {
         this.cantidad = cantidad;
     }
 
-    public void setCodigopro(int codigopro) {
-        this.codigopro = codigopro;
-    }
-
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setTotalpro(double totalpro) {
-        this.totalpro = totalpro;
-    }
-
-    public void setTotalven(double totalven) {
-        this.totalven = totalven;
-    }
-    
 }

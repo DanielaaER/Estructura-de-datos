@@ -4,12 +4,12 @@
  */
 package tiendita;
 
-import java.security.CodeSigner;
-import java.time.temporal.Temporal;
+import java.security.PublicKey;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javax.annotation.processing.SupportedOptions;
+
 
 /**
  *
@@ -53,8 +53,6 @@ public class Menu {
 
     }
 
-
- 
     public static Registro modificar(Registro temporal) {
         Scanner s = new Scanner(System.in);
         int codigo;
@@ -80,10 +78,39 @@ public class Menu {
 
     }
 
+    public static String formatoT(String codigo, String nombre, String cantidad, String precio, String precioT) {
+        String datos = String.format("%-10s    %-40s       %-10s    %-10s    %-10s", codigo, nombre, cantidad, precio, precioT);
+        return datos;
+    
+    }
+
+    public static Venta agregarVenta(Registro registros){
+        Scanner s = new Scanner(System.in);
+        int codigo, cantidad;
+        String opc="s";
+        do {
+            System.out.println("Ingresa el codigo de producto");
+            codigo = s.nextInt();
+            codigo=codigo-1;
+            System.out.println("El producto a comprar es: " + registros.getProductos().get(codigo).getNombre()
+                    + "\n Es correcto (S/N)");
+            opc = s.next();
+        } while (opc == "S");
+        System.out.println("Ingresa la cantidad de productos");
+        cantidad=s.nextInt();
+        String nombre = registros.getProductos().get(codigo).getNombre();
+        double precio = registros.getProductos().get(codigo).getPrecio();
+        Venta temporal = new Venta(codigo,nombre,cantidad,precio);
+
+        return temporal;
+
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         int opc1 = 0, opc2 = 0;
         Registro registros = new Registro();
+        Ticket tickets = new Ticket();
         boolean avanza, avanza2;
         Scanner s = new Scanner(System.in);
         registros.iniciar();
@@ -109,11 +136,11 @@ public class Menu {
                                             case 2:
                                                 System.out.println("Agregar Producto");
                                                 registros.agregarProducto(ingresar());
+                                                System.out.println("Producto agregado");
                                                 break;
                                             case 3:
                                                 System.out.println("Modificar Producto");
                                                 modificar(registros);
-                                                System.out.println("mod");
                                                 System.out.println("Producto actualizado");
                                                 break;
                                             case 4:
@@ -131,6 +158,21 @@ public class Menu {
                             break;
                         case 2:
                             System.out.println("VENTAS");
+                            do {
+
+                                try {
+                                    avanza2 = false;
+                                    System.out.println("Venta");
+                                    registros.imprimeLista();
+                                    tickets.guardarProducto(agregarVenta(registros));
+                                    tickets.imprimeTicket();
+                                    
+                                } catch (InputMismatchException ex) {
+                                    avanza2 = true;
+                                    System.out.println("Ingresa los datos correctamente");
+                                    s.next();
+                                }
+                            } while (avanza2);
                             break;
                         case 3:
                             System.out.println("CORTE DE CAJA");

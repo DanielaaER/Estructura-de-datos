@@ -65,12 +65,8 @@ public class Registro {
 
     public Producto guardarProducto(Producto temporal) {
         folio = folio + 1;
-        productos.add(folio, temporal);
+        productos.add(temporal);
         return productos.get(folio);
-    }
-
-    public void modificarProducto(Producto temporal) {
-      
     }
 
     public ArrayList<Producto> getProductos() {
