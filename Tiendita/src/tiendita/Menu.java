@@ -72,7 +72,7 @@ public class Menu {
             precio = s.nextDouble();
             System.out.println("El precio a modificar es: " + precio + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc != "S");
+        } while (!"S".equals(opc));
         temporal.getProductos().get(codigo).setPrecio(precio);
         return temporal;
 
@@ -89,7 +89,7 @@ public class Menu {
         Scanner s = new Scanner(System.in);
         int codigo, cantidad;
         String opc = "s";
-        
+
         Venta temporal = null;
         do {
             System.out.println("Ingresa el codigo de producto");
@@ -98,13 +98,13 @@ public class Menu {
             System.out.println("El producto a comprar es: " + registros.getProductos().get(codigo).getNombre()
                     + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc != "S");
+        } while (!"S".equals(opc));
         System.out.println("Ingresa la cantidad de productos");
-                cantidad = s.nextInt();
-                String nombre = registros.getProductos().get(codigo).getNombre();
-                double precio = registros.getProductos().get(codigo).getPrecio();
-                temporal = new Venta(codigo, nombre, cantidad, precio);
-       return temporal;
+        cantidad = s.nextInt();
+        String nombre = registros.getProductos().get(codigo).getNombre();
+        double precio = registros.getProductos().get(codigo).getPrecio();
+        temporal = new Venta(codigo, nombre, cantidad, precio);
+        return temporal;
 
     }
 
@@ -175,7 +175,7 @@ public class Menu {
 
                                         System.out.println("Desea agregar otro producto? (S/N)");
                                         opc3 = s.next();
-                                    } while (opc3 != "N");
+                                    } while (!"N".equals(opc3));
                                     tickets.imprimeTicket();
 
                                 } catch (InputMismatchException ex) {
