@@ -54,8 +54,8 @@ public class Menu {
     }
 
 
-
-    public static Producto modificar(Registro temporal) {
+ 
+    public static Registro modificar(Registro temporal) {
         Scanner s = new Scanner(System.in);
         int codigo;
         double precio;
@@ -75,14 +75,14 @@ public class Menu {
             System.out.println("El precio a modificar es: " + precio + "\n Es correcto (S/N)");
             opc = s.next();
         } while (opc == "S");
-        temporal.getProductos().get(codigo).getPrecio();
-        return temporal.getProductos().get(codigo);
+        temporal.getProductos().get(codigo).setPrecio(precio);
+        return temporal;
 
     }
 
     public static void main(String[] args) {
         // TODO code application logic here
-        int opc1 = 0, opc2 = 0, opc3;
+        int opc1 = 0, opc2 = 0;
         Registro registros = new Registro();
         boolean avanza, avanza2;
         Scanner s = new Scanner(System.in);
@@ -104,9 +104,6 @@ public class Menu {
                                         opc2 = s.nextInt();
                                         switch (opc2) {
                                             case 1:
-                                                System.out.println("Lista de productos");
-                                                System.out.println(formato("CODIGO", "NOMBRE", "PRECIO"));
-
                                                 registros.imprimeLista();
                                                 break;
                                             case 2:
@@ -115,8 +112,7 @@ public class Menu {
                                                 break;
                                             case 3:
                                                 System.out.println("Modificar Producto");
-
-                                                registros.modificarProducto(modificar(registros));
+                                                modificar(registros);
                                                 System.out.println("mod");
                                                 System.out.println("Producto actualizado");
                                                 break;

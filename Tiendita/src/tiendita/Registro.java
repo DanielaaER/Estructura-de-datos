@@ -91,6 +91,8 @@ public class Registro {
 
     public void imprimeLista() {
         int i;
+        System.out.println("Lista de productos");
+        System.out.println(Menu.formato("CODIGO", "NOMBRE", "PRECIO"));
         for (i = 0; i < folio; i++) {
             System.out.print(Menu.formato(String.valueOf(productos.get(i).getFolio()),
                     productos.get(i).getNombre(),
