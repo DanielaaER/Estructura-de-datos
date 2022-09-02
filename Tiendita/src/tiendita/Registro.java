@@ -92,7 +92,7 @@ public class Registro {
         for (i = 0; i < folio; i++) {
             System.out.print(Menu.formato(String.valueOf(productos.get(i).getFolio()),
                     productos.get(i).getNombre(),
-                    String.valueOf(productos.get(i).getPrecio())) + "\n");
+                     String.valueOf(productos.get(i).getPrecio())) + "\n");
         }
     }
 

@@ -52,7 +52,6 @@ public class Ticket {
 
     public void imprimeTicket() {
         int i;
-        System.out.println("TICKET DE COMPRA");
         System.out.println(Menu.formatoT("CODIGO", "NOMBRE", "CANTIDAD", "PRECIO", "TOTAL"));
         for (i = 0; i < folio; i++) {
             System.out.print(Menu.formatoT(String.valueOf(ventas.get(i).getCodigopro()+1),ventas.get(i).getNombre(), String.valueOf(ventas.get(i).getCantidad()), String.valueOf(ventas.get(i).getPrecio()),  String.valueOf(ventas.get(i).getTotalpro()) + "\n"));
