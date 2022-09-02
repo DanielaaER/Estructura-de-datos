@@ -9,15 +9,21 @@ package tiendita;
  * @author danie
  */
 public class Producto {
-    private int folio=-1;
+    private int folio = -1;
     private String nombre;
     private double precio;
-    
-    public Producto(int folio, String nombre, double precio){
-    this.folio=folio;
-    this.nombre=nombre;
-    this.precio=precio;
-}
+
+    public Producto(int folio, String nombre, double precio) {
+        this.folio = folio;
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
+    public Producto(String nombre, double precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
     public int getFolio() {
         return folio;
     }
@@ -41,6 +47,5 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
-    
+
 }
