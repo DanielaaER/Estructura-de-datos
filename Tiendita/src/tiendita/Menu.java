@@ -4,12 +4,12 @@
  */
 package tiendita;
 
+import java.net.CookieStore;
 import java.security.PublicKey;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javax.annotation.processing.SupportedOptions;
-
 
 /**
  *
@@ -48,7 +48,7 @@ public class Menu {
             System.out.println("El producto a eliminar es: " + temporal.getProductos().get(pos).getNombre()
                     + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc == "S");
+        } while (opc != "S");
         return pos;
 
     }
@@ -65,52 +65,55 @@ public class Menu {
             System.out.println("El producto a modificar es: " + temporal.getProductos().get(codigo).getNombre()
                     + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc == "S");
+        } while (opc != "S");
         opc = "n";
         do {
             System.out.println("Ingresa el precio de producto a modificar");
             precio = s.nextDouble();
             System.out.println("El precio a modificar es: " + precio + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc == "S");
+        } while (opc != "S");
         temporal.getProductos().get(codigo).setPrecio(precio);
         return temporal;
 
     }
 
     public static String formatoT(String codigo, String nombre, String cantidad, String precio, String precioT) {
-        String datos = String.format("%-10s    %-40s       %-10s    %-10s    %-10s", codigo, nombre, cantidad, precio, precioT);
+        String datos = String.format("%-10s    %-40s       %-10s    %-10s    %-10s", codigo, nombre, cantidad, precio,
+                precioT);
         return datos;
-    
+
     }
 
-    public static Venta agregarVenta(Registro registros){
+    public static Venta agregarVenta(Registro registros) {
         Scanner s = new Scanner(System.in);
         int codigo, cantidad;
-        String opc="s";
+        String opc = "s";
+        
+        Venta temporal = null;
         do {
             System.out.println("Ingresa el codigo de producto");
             codigo = s.nextInt();
-            codigo=codigo-1;
+            codigo = codigo - 1;
             System.out.println("El producto a comprar es: " + registros.getProductos().get(codigo).getNombre()
                     + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc == "S");
+        } while (opc != "S");
         System.out.println("Ingresa la cantidad de productos");
-        cantidad=s.nextInt();
-        String nombre = registros.getProductos().get(codigo).getNombre();
-        double precio = registros.getProductos().get(codigo).getPrecio();
-        Venta temporal = new Venta(codigo,nombre,cantidad,precio);
-
-        return temporal;
+                cantidad = s.nextInt();
+                String nombre = registros.getProductos().get(codigo).getNombre();
+                double precio = registros.getProductos().get(codigo).getPrecio();
+                temporal = new Venta(codigo, nombre, cantidad, precio);
+       return temporal;
 
     }
-    
+
     public static void main(String[] args) {
         // TODO code application logic here
         int opc1 = 0, opc2 = 0;
         Registro registros = new Registro();
-        Ticket tickets = new Ticket();
+        Corte cortes = new Corte();
+
         boolean avanza, avanza2;
         Scanner s = new Scanner(System.in);
         registros.iniciar();
@@ -162,11 +165,19 @@ public class Menu {
 
                                 try {
                                     avanza2 = false;
+                                    Ticket tickets = new Ticket();
                                     System.out.println("Venta");
                                     registros.imprimeLista();
-                                    tickets.guardarProducto(agregarVenta(registros));
+                                    String opc3;
+                                    do {
+                                        tickets.guardarProducto(agregarVenta(registros));
+                                        cortes.guardarProducto(tickets);
+
+                                        System.out.println("Desea agregar otro producto? (S/N)");
+                                        opc3 = s.next();
+                                    } while (opc3 != "N");
                                     tickets.imprimeTicket();
-                                    
+
                                 } catch (InputMismatchException ex) {
                                     avanza2 = true;
                                     System.out.println("Ingresa los datos correctamente");
@@ -176,6 +187,7 @@ public class Menu {
                             break;
                         case 3:
                             System.out.println("CORTE DE CAJA");
+                            cortes.imprimeTotal();
                             break;
                     }
 

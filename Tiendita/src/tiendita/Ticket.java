@@ -57,8 +57,9 @@ public class Ticket {
         for (i = 0; i < folio; i++) {
             System.out.print(Menu.formatoT(String.valueOf(ventas.get(i).getCodigopro()+1),ventas.get(i).getNombre(), String.valueOf(ventas.get(i).getCantidad()), String.valueOf(ventas.get(i).getPrecio()),  String.valueOf(ventas.get(i).getTotalpro()) + "\n"));
         }
+        System.out.println("");
         String dato ="TOTAL A PAGAR";
-        System.out.println(String.format("%-20s          %-70s", dato, String.valueOf(getTotal())));
+        System.out.println(String.format("%81s          %1s", dato, String.valueOf(getTotal())));
     }
 
 }
