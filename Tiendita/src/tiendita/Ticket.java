@@ -14,10 +14,13 @@ import java.util.ArrayList;
 public class Ticket {
 
     private ArrayList<Venta> ventas = new ArrayList<Venta>();
-    private int folio, cantidad = -1;
+    private int folio, cantidad;
     private LocalDateTime fecha;
     private double total;
 
+    public int getCantidad(){
+        return cantidad;
+    }
     public double getTotal() {
         int i;
         total = 0;
@@ -32,10 +35,8 @@ public class Ticket {
     }
 
     public void guardarProducto(Venta temporal) {
-        if (cantidad == -1) {
-            cantidad = cantidad + 1;
             fecha = LocalDateTime.now();
-        }
+        
         folio = folio + 1;
         ventas.add(temporal);
     }
@@ -56,23 +57,28 @@ public class Ticket {
         this.folio = folio;
     }
 
+    public void linea(int x) {
+        int i;
+        for (i = 0; i < x; i++) {
+            System.out.print("-");
+        }
+    }
+
     public void imprimeTicket() {
         int i;
-<<<<<<< HEAD
-        System.out.println("TICKET DE COMPRA No." + cantidad + 1);
+        linea(28);
+        
+        System.out.print(" TICKET DE COMPRA No. " + getCantidad() + " ");
+        linea(28);
+        System.out.println("");
+        linea(80);
+        System.out.println("");
         System.out.println("Fecha: " + fecha);
-//        System.out.println(Menu.formatoT("CODIGO", "NOMBRE", "CANTIDAD", "PRECIO", "TOTAL"));
-//        for (i = 0; i < folio; i++) {
-//            System.out.print(Menu.formatoT(String.valueOf(ventas.get(i).getCodigopro()+1),ventas.get(i).getNombre(), String.valueOf(ventas.get(i).getCantidad()), String.valueOf(ventas.get(i).getPrecio()),  String.valueOf(ventas.get(i).getTotalpro()) + "\n"));
-//        }
-=======
->>>>>>> 053868aeb56e39ec061305eca28bfcfde8b9e20b
         System.out.println(Menu.formatoT("CODIGO", "NOMBRE", "CANTIDAD", "PRECIO", "TOTAL"));
         for (i = 0; i < folio; i++) {
-            System.out.println(Menu.formatoT(String.valueOf(ventas.get(i).getCodigopro()+1), ventas.get(i).getNombre(), String.valueOf(ventas.get(i).getCantidad()), String.valueOf(ventas.get(i).getPrecio()), String.valueOf(ventas.get(i).getTotalpro())));
-//            System.out.print(Menu.formatoT(String.valueOf(ventas.get(i).getFolio()),
-//                    ventas.get(i).getNombre(),
-//                    String.valueOf(ventas.get(i).getPrecio())) + "\n");
+            System.out.println(Menu.formatoT(String.valueOf(ventas.get(i).getCodigopro() + 1),
+                    ventas.get(i).getNombre(), String.valueOf(ventas.get(i).getCantidad()),
+                    String.valueOf(ventas.get(i).getPrecio()), String.valueOf(ventas.get(i).getTotalpro())));
         }
         System.out.println("");
         String dato = "TOTAL A PAGAR";

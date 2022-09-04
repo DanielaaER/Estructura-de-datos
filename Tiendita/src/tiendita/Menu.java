@@ -173,7 +173,6 @@ public class Menu {
                                         opc3 = s.next();
                                     } while (!"N".equals(opc3));
                                     tickets.imprimeTicket();
-
                                 } catch (InputMismatchException ex) {
                                     avanza2 = true;
                                     System.out.println("Ingresa los datos correctamente");
