@@ -4,12 +4,9 @@
  */
 package tiendita;
 
-import java.net.CookieStore;
-import java.security.PublicKey;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import javax.annotation.processing.SupportedOptions;
 
 /**
  *
@@ -48,7 +45,7 @@ public class Menu {
             System.out.println("El producto a eliminar es: " + temporal.getProductos().get(pos).getNombre()
                     + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc != "S");
+        } while (!"S".equals(opc));
         return pos;
 
     }
@@ -65,7 +62,7 @@ public class Menu {
             System.out.println("El producto a modificar es: " + temporal.getProductos().get(codigo).getNombre()
                     + "\n Es correcto (S/N)");
             opc = s.next();
-        } while (opc != "S");
+        } while (!"S".equals(opc));
         opc = "n";
         do {
             System.out.println("Ingresa el precio de producto a modificar");
@@ -79,8 +76,7 @@ public class Menu {
     }
 
     public static String formatoT(String codigo, String nombre, String cantidad, String precio, String precioT) {
-        String datos = String.format("%-10s    %-40s       %-10s    %-10s    %-10s", codigo, nombre, cantidad, precio,
-                precioT);
+        String datos = String.format("%-10s %-40s %-10s %-10s %-10s", codigo, nombre, cantidad, precio, precioT);
         return datos;
 
     }

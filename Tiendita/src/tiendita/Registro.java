@@ -13,54 +13,52 @@ import java.util.ArrayList;
 public class Registro {
 
     private ArrayList<Producto> productos = new ArrayList<Producto>();
-    private int folio, id;
+    private int folio;
 
     public void iniciar() {
         Producto temporal;
         folio++;
-        id++;
         temporal = new Producto(folio, "Cereal Kellogs", 32.50);
         productos.add(temporal);
         folio++;
-        id++;
         temporal = new Producto(folio, "Leche Alpura Deslactosada", 19.70);
         productos.add(temporal);
         folio++;
-        id++;
         temporal = new Producto(folio, "Refresco 600ml", 18.20);
         productos.add(temporal);
         folio++;
-        id++;
         temporal = new Producto(folio, "Sabritas 50g", 13.20);
         productos.add(temporal);
         folio++;
-        id++;
         temporal = new Producto(folio, "Caramelos Variados", 3);
         productos.add(temporal);
         folio++;
-        id++;
         temporal = new Producto(folio, "Crema de Cacahuate Nutella 200g ", 45.50);
         productos.add(temporal);
         folio++;
-        id++;
         temporal = new Producto(folio, "Shampoo Pantene 350ml ", 98.30);
         productos.add(temporal);
         folio++;
-        id++;
         temporal = new Producto(folio, "Crema Dental Colgate 250g ", 32.60);
         productos.add(temporal);
     }
 
     public void agregarProducto(Producto temporal){
         folio=folio+1;
-        id++;
-        temporal.setFolio(id);
+        temporal.setFolio(folio);
         productos.add(temporal);
     }
 
     public void borrarProducto(int pos) {
         folio = folio - 1;
+        int i;
+        int acu=productos.get(pos).getFolio();
         productos.remove(pos);
+        int tamaño = productos.size();
+        for (i=pos;i<tamaño ;i++){
+            productos.get(i).setFolio(acu);
+            acu=acu+1;
+        }
     }
 
     public Producto guardarProducto(Producto temporal) {
