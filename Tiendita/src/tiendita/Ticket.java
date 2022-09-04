@@ -14,13 +14,11 @@ import java.util.ArrayList;
 public class Ticket {
 
     private ArrayList<Venta> ventas = new ArrayList<Venta>();
-    private int folio, cantidad;
+    private int folio;
     private LocalDateTime fecha;
     private double total;
 
-    public int getCantidad(){
-        return cantidad;
-    }
+    
     public double getTotal() {
         int i;
         total = 0;
@@ -57,6 +55,12 @@ public class Ticket {
         this.folio = folio;
     }
 
+   
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
     public void linea(int x) {
         int i;
         for (i = 0; i < x; i++) {
@@ -64,11 +68,10 @@ public class Ticket {
         }
     }
 
-    public void imprimeTicket() {
+    public void imprimeTicket(int x) {
         int i;
         linea(28);
-        
-        System.out.print(" TICKET DE COMPRA No. " + getCantidad() + " ");
+        System.out.print(" TICKET DE COMPRA No. " + x + " ");
         linea(28);
         System.out.println("");
         linea(80);

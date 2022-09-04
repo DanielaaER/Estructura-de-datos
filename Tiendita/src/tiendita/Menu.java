@@ -172,7 +172,7 @@ public class Menu {
                                         System.out.println("Desea agregar otro producto? (S/N)");
                                         opc3 = s.next();
                                     } while (!"N".equals(opc3));
-                                    tickets.imprimeTicket();
+                                    tickets.imprimeTicket(cortes.getCantidad());
                                 } catch (InputMismatchException ex) {
                                     avanza2 = true;
                                     System.out.println("Ingresa los datos correctamente");
