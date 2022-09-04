@@ -58,12 +58,15 @@ public class Ticket {
 
     public void imprimeTicket() {
         int i;
+<<<<<<< HEAD
         System.out.println("TICKET DE COMPRA No." + cantidad + 1);
         System.out.println("Fecha: " + fecha);
 //        System.out.println(Menu.formatoT("CODIGO", "NOMBRE", "CANTIDAD", "PRECIO", "TOTAL"));
 //        for (i = 0; i < folio; i++) {
 //            System.out.print(Menu.formatoT(String.valueOf(ventas.get(i).getCodigopro()+1),ventas.get(i).getNombre(), String.valueOf(ventas.get(i).getCantidad()), String.valueOf(ventas.get(i).getPrecio()),  String.valueOf(ventas.get(i).getTotalpro()) + "\n"));
 //        }
+=======
+>>>>>>> 053868aeb56e39ec061305eca28bfcfde8b9e20b
         System.out.println(Menu.formatoT("CODIGO", "NOMBRE", "CANTIDAD", "PRECIO", "TOTAL"));
         for (i = 0; i < folio; i++) {
             System.out.println(Menu.formatoT(String.valueOf(ventas.get(i).getCodigopro()+1), ventas.get(i).getNombre(), String.valueOf(ventas.get(i).getCantidad()), String.valueOf(ventas.get(i).getPrecio()), String.valueOf(ventas.get(i).getTotalpro())));
